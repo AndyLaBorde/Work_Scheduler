@@ -3,27 +3,47 @@
 // in the html.
 var currentTime = dayjs();
 var currentDay = $('#currentDay')
-var hour9 = $('#hour-9');
-var hour10 = $('#hour-10');
-var hour11 = $('#hour-11');
-var hour12 = $('#hour-12');
-var hour1 = $('#hour-1');
-var hour2 = $('#hour-2');
-var hour3 = $('#hour-3');
-var hour4 = $('#hour-');
-
-
-
+var textArea = $('textarea', this).val();
+var appointments = [];
+var hoursEl = $('#hours', this).children();
+var timesArr = [];
+i = 0;
+$('div.row').each(function () {
+  timesArr[i++] = $(this).attr('data-hour');
+  
+})
+console.log(timesArr);
 $(function () {
+  console.log(hoursEl);
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   $(document).on('click', '.saveBtn', function() {
     // DOM traversal can be used to get the "hour-x" id of the parent element a.k.a ->
     var parentEl = $(this).parent();
-    console.log(parentEl);
+
+    var userInputObject = {
+      id: parentEl[0].id,
+      userInput: parentEl[0].children[1].value
+    }
+    appointments.push(userInputObject);
+    localStorage.setItem("appointments", JSON.stringify(appointments));
+
+    console.log(localStorage.appointments);
     console.log(parentEl[0].id);
+    
+    // textArea.text(localStorage.getItem("appointments")) || [];
+    
+    console.log(textArea);
+    // for (var i = 0; i < appointments.length; i++){
+    //   textArea.textContent = `${textArea[i].userInput}`;
+    //   textArea.append('userInput');
+    // }
   })
+
+  // .then(function displayApp() {
+
+  // })
   // How might the id be
   // useful when saving the description in local storage?
 
@@ -39,14 +59,13 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-
-  // $('#currentDay').text(currentTime.$d);
+  var day = dayjs();
   window.onload = displayClock();
   function displayClock(){
-  var display = new Date().toLocaleTimeString();
-  currentDay.text(display);
-  setTimeout(displayClock, 1000); 
+    var liveTime = new Date().toLocaleTimeString();
   
-}
+    currentDay.text(day.format("MM DD, YYYY") + " " + liveTime);
+    setTimeout(displayClock, 1000);
+  }
 });
 
