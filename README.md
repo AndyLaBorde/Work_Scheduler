@@ -38,7 +38,7 @@ THEN the saved events persist
 
 ## Deployed Application
 
-Under Construction
+https://andylaborde.github.io/Work_Scheduler/
 
 ## Credits
 
