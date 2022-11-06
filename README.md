@@ -34,11 +34,16 @@ THEN the saved events persist
 
 ## Mock Up
 
+
 ![assignment demo gif](Assets/05-third-party-apis-homework-demo.gif)
 
 ## Deployed Application
 
 https://andylaborde.github.io/Work_Scheduler/
+
+![Alt text](../../../../../../../C:/Users/andik/OneDrive/Desktop/Bootcamp/Work_Scheduler/screenshot1.png)
+
+![Alt text](../../../../../../../C:/Users/andik/OneDrive/Desktop/Bootcamp/Work_Scheduler/sceenshot2.png)
 
 ## Credits
 
