@@ -41,9 +41,9 @@ THEN the saved events persist
 
 https://andylaborde.github.io/Work_Scheduler/
 
-![Alt text](../../../../../../../C:/Users/andik/OneDrive/Desktop/Bootcamp/Work_Scheduler/screenshot1.png)
+![Deployed Applicaion screenshot](./Assets/screenshot1.png)
 
-![Alt text](../../../../../../../C:/Users/andik/OneDrive/Desktop/Bootcamp/Work_Scheduler/sceenshot2.png)
+![Deployed Applicaion screenshot](./Assets/sceenshot2.png)
 
 ## Credits
 
