@@ -1,33 +1,24 @@
 var currentDay = $('#currentDay')
 var appointments = [];
 var timeBlockEl = $('.time-block');
-var liveTime = new Date().toLocaleTimeString();
 var day = dayjs();
 var saveBtn = $('.saveBtn');
 // empty times array for office
-var timesArr = [];
-i = 0;
-$('div.row').each(function () {
-  timesArr[i++] = $(this).attr('id');
-})
-console.log(timesArr); // logs the times array in order on page load...
 
-$(function () {   
-  var day = dayjs();   
-  window.onload = displayClock();   
-  function displayClock() {   
+var day = dayjs();   
+window.onload = displayClock(); 
+
+function displayClock() {   
     var liveTime = new Date().toLocaleTimeString();    
     currentDay.text(day.format("MM DD, YYYY") + " " + liveTime);   
     setTimeout(displayClock, 1000);   
-  }
+}
 
-  function checkTime() {
+function checkTime() {
     var hour = day.hour();
 
     timeBlockEl.each(function() {
-      currentBlock = parseInt($(this).attr("id"));
-
-      console.log(this);
+      var currentBlock = parseInt($(this).attr("id"));
 
       if (currentBlock > hour) {
         $(this).addClass("future");
@@ -36,29 +27,36 @@ $(function () {
       } else {
         $(this).addClass("past");
       }
-
     })
-  }
+}
 
-  
-  saveBtn.on('click', function() {
-    var time = $(this).siblings(".row").text();
-    var appointment = $(this).sublings(".description");
+saveBtn.on('click', function() {
+    // console.log(this); // this is the save button
 
+    var time = $(this).siblings("div.hour").text(); // this should be the hours typed in the div
+
+    var appointment = $(this).siblings(".description").val(); // this should be the text input for the colored time block
+    
     localStorage.setItem(time, appointment);
-  });
 
-    function displayAppointment () {
-    $('.row').each(function () {
-      var textInput = $(this).text();
-      var userInput = localStorage.getItem(textInput);
-
-      if(userInput !== null) {
-        $(this).siblings(".description").val(userInput);
-      }
-    })
-  }
-  checkTime();
-  displayAppointment();
 });
+
+function displayAppointment () {
+  $('.row').each(function () {
+    console.log(this);
+    var textInput = $(this).children(".hour").text();
+    console.log(textInput);
+
+    var userInput = localStorage.getItem(textInput);
+
+    if(userInput !== null) {
+      $(this).children(".description").val(userInput);
+    }
+  })
+
+
+}
+checkTime();
+displayAppointment();
+
 
